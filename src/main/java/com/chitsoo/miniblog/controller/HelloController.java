@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/hello")
 @Controller
 public class HelloController {
-    @GetMapping("/temp")
-    public String temp_test() {
-        System.out.println("temp출력");
-        return "/WEB-INF/views/user/temp.jsp";
-    }
     @GetMapping("/joinForm")
     public String joinForm() {
         System.out.println("출력");
