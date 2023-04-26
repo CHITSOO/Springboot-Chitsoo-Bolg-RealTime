@@ -1,4 +1,4 @@
-package com.chitsoo.miniblog.controller;
+package com.chitsoo.miniblog.controller.viewtest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,42 +10,42 @@ public class HelloController {
     @GetMapping("/joinForm")
     public String joinForm() {
         System.out.println("출력");
-        return "/WEB-INF/views/user/joinForm.jsp";
+        return "user/joinForm";
     }
 
     @GetMapping("/loginForm")
     public String loginForm() {
-        return "/WEB-INF/views/user/loginForm.jsp";
+        return "user/loginForm";
     }
 
     @GetMapping("/user/updateForm")
     public String userUpdateForm() {
-        return "/WEB-INF/views/user/updateForm.jsp";
+        return "user/updateForm";
     }
 
     @GetMapping({ "/", "/board" })
     public String main() {
-        return "/WEB-INF/views/board/main.jsp";
+        return "board/main";
     }
 
     @GetMapping("/board/{id}")
     public String boardDetail() {
-        return "/WEB-INF/views/board/detail.jsp";
+        return "board/detail";
     }
 
     @GetMapping("/board/saveForm")
     public String boardSaveForm() {
-        return "/WEB-INF/views/board/saveForm.jsp";
+        return "board/saveForm";
     }
 
     @GetMapping("/board/{id}/updateForm")
     public String boardUpdateForm() {
-        return "/WEB-INF/views/board/updateForm.jsp";
+        return "board/updateForm";
     }
 
 //    @GetMapping("/user/profileUpdateForm")
 //    public String profileUpdateForm(){
-//        return "/WEB-INF/views/user/profileUpdateForm.jsp";
+//        return "user/profileUpdateForm";
 //    }
 
 }

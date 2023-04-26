@@ -24,6 +24,9 @@ public class SecurityConfig {
         // 1. CSRF 해제
         http.csrf().disable();
 
+        // 2. frame option 해제 (시큐리티 h2-console 접속 허용을 위해)
+        http.headers().frameOptions().disable(); // X-Frame-Options 보안 기능을 비활성화 - H2 데이터베이스 콘솔을 사용하기 위해서는 <iframe> 태그를 사용해야 하기 때문.
+
         // 2. Form 로그인 설정
         http.formLogin()
                 .loginPage("/loginForm") // 로그인 페이지 주소 설정
