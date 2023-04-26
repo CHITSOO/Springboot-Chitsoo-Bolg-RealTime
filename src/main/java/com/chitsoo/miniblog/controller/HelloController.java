@@ -10,47 +10,47 @@ public class HelloController {
     @GetMapping("/temp")
     public String temp_test() {
         System.out.println("temp출력");
-        return "user/temp";
+        return "/WEB-INF/views/user/temp.jsp";
     }
     @GetMapping("/joinForm")
     public String joinForm() {
         System.out.println("출력");
-        return "user/joinForm";
+        return "/WEB-INF/views/user/joinForm.jsp";
     }
 
     @GetMapping("/loginForm")
     public String loginForm() {
-        return "user/loginForm";
+        return "/WEB-INF/views/user/loginForm.jsp";
     }
 
     @GetMapping("/user/updateForm")
     public String userUpdateForm() {
-        return "user/updateForm";
+        return "/WEB-INF/views/user/updateForm.jsp";
     }
 
     @GetMapping({ "/", "/board" })
     public String main() {
-        return "board/main";
+        return "/WEB-INF/views/board/main.jsp";
     }
 
     @GetMapping("/board/{id}")
     public String boardDetail() {
-        return "board/detail";
+        return "/WEB-INF/views/board/detail.jsp";
     }
 
     @GetMapping("/board/saveForm")
     public String boardSaveForm() {
-        return "board/saveForm";
+        return "/WEB-INF/views/board/saveForm.jsp";
     }
 
     @GetMapping("/board/{id}/updateForm")
     public String boardUpdateForm() {
-        return "board/updateForm";
+        return "/WEB-INF/views/board/updateForm.jsp";
     }
 
-    @GetMapping("/user/profileUpdateForm")
-    public String profileUpdateForm(){
-        return "user/profileUpdateForm";
-    }
+//    @GetMapping("/user/profileUpdateForm")
+//    public String profileUpdateForm(){
+//        return "/WEB-INF/views/user/profileUpdateForm.jsp";
+//    }
 
 }
