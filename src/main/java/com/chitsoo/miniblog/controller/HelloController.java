@@ -7,16 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/hello")
 @Controller
 public class HelloController {
-//    @GetMapping("/b")
-//    public String view2_test() {
-//        return "temp.jsp";
-//    }
-//    @GetMapping("/a")
-//    public String view_test() {
-//        return "view";
-//    }
+    @GetMapping("/temp")
+    public String temp_test() {
+        System.out.println("temp출력");
+        return "user/temp";
+    }
     @GetMapping("/joinForm")
     public String joinForm() {
+        System.out.println("출력");
         return "user/joinForm";
     }
 
