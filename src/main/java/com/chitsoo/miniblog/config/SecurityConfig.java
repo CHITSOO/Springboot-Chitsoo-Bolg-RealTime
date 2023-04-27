@@ -30,12 +30,14 @@ public class SecurityConfig {
         // 2. Form 로그인 설정
         http.formLogin()
                 .loginPage("/loginForm") // 로그인 페이지 주소 설정
-                .loginProcessingUrl("/login") // 로그인 폼에서 입력받은 정보를 처리 - 로그인 폼에서 입력받은 정보가 전송되면 해당 URL로 요청
+                .loginProcessingUrl("/login") // (MyUserDetailsService 호출, Post, x-www-urlencoded) 로그인 폼에서 입력받은 정보를 처리 - 로그인 폼에서 입력받은 정보가 전송되면 해당 URL로 요청
                 .successHandler(((request, response, authentication) -> {
                     log.debug("디버그 : 로그인 성공"); // @Slf4j
+                    response.sendRedirect("/");
                 }))
                 .failureHandler(((request, response, exception) -> { // 인증과 권한 실패시 항상 여기로.
                     log.debug("디버그 : 로그인 실패 : " + exception.getMessage()); // @Slf4j
+                    response.sendRedirect("/loginForm");
                 }));
 
         // 3. 인증, 권한 필터 설정 (이 프로젝트에서는 권한 처리 안하고 인증만) (인증 = 로그인)
