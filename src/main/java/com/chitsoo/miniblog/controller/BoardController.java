@@ -28,11 +28,13 @@ public class BoardController {
         // log.debug("디버그 : " + myUserDetails.getUsername());
 
 //    public @ResponseBody Page<Board> main(@RequestParam(defaultValue = "0") Integer page){ // 쿼리스트링 -> 안 넣어줄 수도 있으니 default값 넣어주기, null 값 확인할 수 있는 Integer가 더 나음
-    public String main(@RequestParam(defaultValue = "0") Integer page, Model model){ // Model -  Spring MVC에서 컨트롤러와 뷰 사이의 데이터를 전달하는 데 사용되는 객체
-        PageRequest pageRequest = PageRequest.of(page, 8, Sort.by("id").ascending());
-        Page<Board> boardPG = boardService.글목록보기(pageRequest); // 영속화 된게 아님 - 서비스 요청하고 나서 컨트롤러 돌아오는 순간 OSIV가 꺼져있으니깐(db세션 닫힘) 비영속. db세션에 연결 안됨. db랑 상관없음 더이상.
+//    public String main(@RequestParam(defaultValue = "0") Integer page, Model model){ // Model -  Spring MVC에서 컨트롤러와 뷰 사이의 데이터를 전달하는 데 사용되는 객체
+    public String main(@RequestParam(defaultValue = "0") int page, Model model){ // defaultValue가 있기 때문에 Integer 안쓰고 int 해도 됨.
+//        PageRequest pageRequest = PageRequest.of(page, 8, Sort.by("id").ascending());
+//        Page<Board> boardPG = boardService.글목록보기(pageRequest); // 영속화 된게 아님 - 서비스 요청하고 나서 컨트롤러 돌아오는 순간 OSIV가 꺼져있으니깐(db세션 닫힘) 비영속. db세션에 연결 안됨. db랑 상관없음 더이상.
         // 영속성 컨택스트에는 남아있지만, (데이터베이스)세션이 종료되었기 때문에 조회가 안됨. lazy loading이 안됨. 그래서 개념상 비영속이라고 봄.
 
+        Page<Board> boardPG = boardService.글목록보기(page);
         model.addAttribute("boardPG", boardPG); // 개념상 request.setAttribute와 비슷.
         return "board/main";
     }
