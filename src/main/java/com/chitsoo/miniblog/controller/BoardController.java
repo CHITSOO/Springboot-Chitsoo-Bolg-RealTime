@@ -19,4 +19,9 @@ public class BoardController {
     public String main(){
         return "board/main";
     }
+
+    @GetMapping("/s/board/saveForm") // 앞에 s가 붙으면 인증된 사용자만
+    public String saveForm(){
+        return "board/saveForm";
+    }
 }

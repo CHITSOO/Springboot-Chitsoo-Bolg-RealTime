@@ -8,7 +8,7 @@
     <title>Blog</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"> <%--섬머노트 cdn 링크--%>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/32aa2b8683.js" crossorigin="anonymous"></script>
@@ -40,7 +40,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="/board/saveForm">글쓰기</a>
+                    <a class="nav-link" href="s/board/saveForm">글쓰기</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/user/updateForm">회원정보</a>

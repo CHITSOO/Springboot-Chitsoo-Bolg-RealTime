@@ -9,14 +9,14 @@
         </div>
 
         <div class="form-group">
-            <textarea class="form-control summernote" rows="5" name="content"></textarea>
+            <textarea class="form-control summernote" rows="5" name="content"></textarea> <%--.summernote는 class인 얘를 찾는다.--%>
         </div>
         <button class="btn btn-primary">글쓰기완료</button>
     </form>
 </div>
 
 <script>
-    $('.summernote').summernote({
+    $('.summernote').summernote({ <%--섬머노트 적용--%>
         tabsize: 2,
         height: 500
     });
