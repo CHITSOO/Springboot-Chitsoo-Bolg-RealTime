@@ -2,6 +2,7 @@ package com.chitsoo.miniblog.model.board;
 
 import com.chitsoo.miniblog.model.user.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
