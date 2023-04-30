@@ -1,11 +1,14 @@
 package com.chitsoo.miniblog.config;
 
+import com.chitsoo.miniblog.core.auth.MyUserDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import javax.servlet.http.HttpSession;
 
 @Slf4j // Logger 객체를 생성하지 않아도 되므로 코드의 가독성이 향상
 @Configuration// IoC 컨테이너에 등록하려면 컴포넌트 스캔이 되어야 함. 설정 정보를 제공하는 클래스에 붙임.
@@ -27,12 +30,18 @@ public class SecurityConfig {
         // 2. frame option 해제 (시큐리티 h2-console 접속 허용을 위해)
         http.headers().frameOptions().disable(); // X-Frame-Options 보안 기능을 비활성화 - H2 데이터베이스 콘솔을 사용하기 위해서는 <iframe> 태그를 사용해야 하기 때문.
 
-        // 2. Form 로그인 설정
+        // 3. Form 로그인 설정
         http.formLogin()
                 .loginPage("/loginForm") // 로그인 페이지 주소 설정
                 .loginProcessingUrl("/login") // (MyUserDetailsService 호출, Post, x-www-urlencoded) 로그인 폼에서 입력받은 정보를 처리 - 로그인 폼에서 입력받은 정보가 전송되면 해당 URL로 요청
-                .successHandler(((request, response, authentication) -> {
+                .successHandler(((request, response, authentication) -> { // authentication 객체는 security context holder에 꼽혀있는 객체
                     log.debug("디버그 : 로그인 성공"); // @Slf4j
+
+                    // View에서 사용하려고!!
+                    MyUserDetails myUserDetails = (MyUserDetails) authentication.getPrincipal();
+                    HttpSession session = request.getSession();
+                    session.setAttribute("sessionUser", myUserDetails); // 세션 하나 더 만듦
+
                     response.sendRedirect("/");
                 }))
                 .failureHandler(((request, response, exception) -> { // 인증과 권한 실패시 항상 여기로.
